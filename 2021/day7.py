@@ -1,5 +1,3 @@
-import math
-
 with open("input-7.txt") as f:
     p = sorted([int(x) for x in f.readline().split(",")])
 
