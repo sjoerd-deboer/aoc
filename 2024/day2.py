@@ -8,22 +8,25 @@ with open(file_path, 'r') as f:
     data = [[int(z) for z in y] for y in [x.strip().split() for x in f]]
     change = [[y - x for x, y in row] for row in [zip(x[:-1], x[1:]) for x in data]]
 
-rule1 = lambda r: all(x<0 for x in r) or all(x>0 for x in r)
-rule2 = lambda r: min(r)>-4 and max(r)<4
+rule1 = lambda r: all(x < 0 for x in r) or all(x > 0 for x in r)
+rule2 = lambda r: min(r) > -4 and max(r) < 4
+
 
 def part_one():
     return sum([a and b for a, b in zip([rule1(x) for x in change], [rule2(x) for x in change])])
+
 
 def part_two():
     counter = 0
     for r in data:
         result = []
         for x in range(len(r)):
-            sub_row = r[:x] + r[x+1:]
+            sub_row = r[:x] + r[x + 1:]
             c = [y - x for x, y in zip(sub_row[:-1], sub_row[1:])]
             result.append(rule1(c) and rule2(c))
         counter += any(result)
     return counter
+
 
 if __name__ == '__main__':
     start_time = time.time()
