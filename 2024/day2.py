@@ -8,8 +8,11 @@ with open(file_path, 'r') as f:
     data = [[int(z) for z in y] for y in [x.strip().split() for x in f]]
     change = [[y - x for x, y in row] for row in [zip(x[:-1], x[1:]) for x in data]]
 
-rule1 = lambda r: all(x < 0 for x in r) or all(x > 0 for x in r)
-rule2 = lambda r: min(r) > -4 and max(r) < 4
+
+def rule1(r): return all(x < 0 for x in r) or all(x > 0 for x in r)
+
+
+def rule2(r): return min(r) > -4 and max(r) < 4
 
 
 def part_one():

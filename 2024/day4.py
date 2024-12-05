@@ -16,7 +16,7 @@ def find_xmas(x): return len(re.findall('(?=(XMAS|SAMX))', "".join(x)))
 
 def part_one():
     result = 0
-    for i in range(-(len(data)-1), len(data)):
+    for i in range(-(len(data) - 1), len(data)):
         result += find_xmas(data.diagonal(i).tolist()) + find_xmas(data_flipped.diagonal(i).tolist())
     for y in range(len(data[0])):
         result += find_xmas(data[y].tolist())
@@ -31,13 +31,12 @@ def part_two():
         for y in range(len(data[0])):
             cell = data[x][y]
             if cell == 'A':
-                if x-1 >= 0 and y-1 >= 0 and x+1 < len(data) and y+1 < len(data[0]):
-                    d1 = re.match('MS|SM', str(data[x-1][y-1]) + str(data[x+1][y+1]))
-                    d2 = re.match('MS|SM', str(data[x-1][y+1]) + str(data[x+1][y-1]))
+                if x - 1 >= 0 and y - 1 >= 0 and x + 1 < len(data) and y + 1 < len(data[0]):
+                    d1 = re.match('MS|SM', str(data[x - 1][y - 1]) + str(data[x + 1][y + 1]))
+                    d2 = re.match('MS|SM', str(data[x - 1][y + 1]) + str(data[x + 1][y - 1]))
                     if d1 and d2:
                         counter += 1
     return counter
-
 
 
 if __name__ == '__main__':

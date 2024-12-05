@@ -6,14 +6,18 @@ file_path = f'data/test{day}.txt' if TEST else f'data/day{day}.txt'
 
 with open(file_path, 'r') as f:
     data = [x.strip() for x in f]
+    print(data)
+
 
 def part_one():
-    result = data
+    result = -1
     return result
 
+
 def part_two():
-    result = data
+    result = -1
     return result
+
 
 if __name__ == '__main__':
     start_time = time.time()
